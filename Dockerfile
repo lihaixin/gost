@@ -5,15 +5,16 @@ MAINTAINER sanjin
 ENV WANNAME eth0
 ENV SERVER_PORT 15901
 ENV LANRANGE "192.168.0.0/24"
-ENV WGSERVERIP "10.0.0.1/32"
-ENV WGCLIENTIP "10.0.0.2/32"
-ENV WGRANGE "10.0.0.0/24"
-ENV WGNAME wg0
+ENV GOSTSERVERIP "10.0.0.1/24"
+ENV GOSTCLIENTIP "10.0.0.2/24"
+ENV GOSTRANGE "10.0.0.0/24"
+ENV GOSTNAME tun0
 ENV mtu 1300
-ENV PASSWORD pwd
+ENV INTERVAL 15
+ENV PASSWORD password
 ENV TZ=Asia/Shanghai
 ENV FEC_OPTIONS "1:2,2:4,8:6,20:10"
-ENV TIMEOUT 1
+ENV TIMEOUT 4ms
 
 WORKDIR /home
 
@@ -40,6 +41,8 @@ RUN apk update \
  && tar -zxvf $UDP2RAW_FILE_NAME \
  && find ./ -type f -not -name "$UDP2RAW_BIN_NAME" -delete \
  && mv "/home/$UDP2RAW_BIN_NAME" /usr/bin/gost
+ 
+EXPOSE 4096/UDP
  
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
