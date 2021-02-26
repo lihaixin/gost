@@ -26,7 +26,6 @@ ARG UDPSPEEDER_BIN_NAME="speederv2_$ARCH"
 
 ARG GOST_TAG_NAME=2.11.1
 ARG GOST_FILE_NAME="gost-linux-amd64-$GOST_TAG_NAME.gz
-ARG UDP2RAW_DL_ADRESS="https://github.com/wangyu-/udp2raw-tunnel/releases/download/$UDP2RAW_TAG_NAME/$UDP2RAW_FILE_NAME"
 ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/gost-linux-$ARCH-$GOST_TAG_NAME.gz
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
@@ -40,7 +39,8 @@ RUN apk update \
  && wget $GOST_DL_ADRESS -O $GOST_FILE_NAME \
  && tar -zxvf $UDP2RAW_FILE_NAME \
  && find ./ -type f -not -name "$UDP2RAW_BIN_NAME" -delete \
- && mv "/home/$UDP2RAW_BIN_NAME" /usr/bin/gost
+ && mv "/home/$UDP2RAW_BIN_NAME" /usr/bin/gost \
+ && chmod +x /usr/bin/gost
  
 EXPOSE 4096/UDP
  
