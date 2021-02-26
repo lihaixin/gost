@@ -3,10 +3,10 @@ LABEL name=gost
 MAINTAINER sanjin
 
 ENV WANNAME eth0
-ENV SERVER_PORT 15901
+ENV SERVER_PORT 8421
 ENV LANRANGE "192.168.0.0/24"
-ENV GOSTSERVERIP "10.0.0.1/24"
-ENV GOSTCLIENTIP "10.0.0.2/24"
+ENV GOSTSERVERIP "192.168.123.1/24"
+ENV GOSTCLIENTIP "192.168.123.2/24"
 ENV GOSTRANGE "10.0.0.0/24"
 ENV GOSTNAME tun0
 ENV mtu 1300
@@ -31,7 +31,7 @@ ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TA
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
 RUN apk update \
- && apk add -y wget \
+ && apk add -y wget tzdata \
  && apt clean \
  && wget $UDPSPEEDER_DL_ADRESS -O $UDPSPEEDER_FILE_NAME \
  && tar -zxvf $UDPSPEEDER_FILE_NAME \
