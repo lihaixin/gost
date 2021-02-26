@@ -32,11 +32,11 @@ ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 RUN apk update \
  && apk add wget tzdata tar\
  && wget $UDPSPEEDER_DL_ADRESS -O $UDPSPEEDER_FILE_NAME \
- && tar -zxvf $UDPSPEEDER_FILE_NAME \
+ && tar -zxv $UDPSPEEDER_FILE_NAME \
  && find ./ -type f -not -name "$UDPSPEEDER_BIN_NAME" -delete \
  && mv "/home/$UDPSPEEDER_BIN_NAME" /usr/bin/speederv2 \
  && wget $GOST_DL_ADRESS -O $GOST_FILE_NAME \
- && tar -zxvf $UDP2RAW_FILE_NAME \
+ && tar -zxv $UDP2RAW_FILE_NAME \
  && find ./ -type f -not -name "$UDP2RAW_BIN_NAME" -delete \
  && mv "/home/$UDP2RAW_BIN_NAME" /usr/bin/gost \
  && chmod +x /usr/bin/gost
