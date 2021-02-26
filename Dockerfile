@@ -25,18 +25,18 @@ ARG UDPSPEEDER_DL_ADRESS="https://github.com/wangyu-/UDPspeeder/releases/downloa
 ARG UDPSPEEDER_BIN_NAME="speederv2_$ARCH"
 
 ARG GOST_TAG_NAME=2.11.1
-ARG GOST_FILE_NAME="gost-linux-amd64-$GOST_TAG_NAME.gz"
-ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/gost-linux-$ARCH-$GOST_TAG_NAME.gz"
+ARG GOST_FILE_NAME="gost-linux-$ARCH-$GOST_TAG_NAME.gz"
+ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/$GOST_FILE_NAME"
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
 RUN apk update \
- && apk add wget tzdata tar \
+ && apk add wget tzdata tar gzip \
  && wget $UDPSPEEDER_DL_ADRESS -O $UDPSPEEDER_FILE_NAME \
  && tar -zxvf $UDPSPEEDER_FILE_NAME \
  && find ./ -type f -not -name "$UDPSPEEDER_BIN_NAME" -delete \
  && mv "/home/$UDPSPEEDER_BIN_NAME" /usr/bin/speederv2 \
  && wget $GOST_DL_ADRESS -O $GOST_FILE_NAME \
- && tar -zxvf $GOST_FILE_NAME \
+ && gzip -d $GOST_FILE_NAME \
  && find ./ -type f -not -name "$GOST_BIN_NAME" -delete \
  && mv "/home/$GOST_BIN_NAME" /usr/bin/gost \
  && chmod +x /usr/bin/gost
