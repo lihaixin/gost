@@ -35,6 +35,7 @@ RUN apk update \
  && tar -zxvf $UDPSPEEDER_FILE_NAME \
  && find ./ -type f -not -name "$UDPSPEEDER_BIN_NAME" -delete \
  && mv "/home/$UDPSPEEDER_BIN_NAME" /usr/bin/speederv2 \
+ && chmod +x /usr/bin/speederv2 \
  && wget $GOST_DL_ADRESS -O $GOST_FILE_NAME \
  && gzip -d $GOST_FILE_NAME \
  && find ./ -type f -not -name "$GOST_BIN_NAME" -delete \
