@@ -30,8 +30,7 @@ ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TA
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
 RUN apk update \
- && apk add -y wget tzdata \
- && apt clean \
+ && apk add wget tzdata \
  && wget $UDPSPEEDER_DL_ADRESS -O $UDPSPEEDER_FILE_NAME \
  && tar -zxvf $UDPSPEEDER_FILE_NAME \
  && find ./ -type f -not -name "$UDPSPEEDER_BIN_NAME" -delete \
