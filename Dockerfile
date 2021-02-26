@@ -25,8 +25,8 @@ ARG UDPSPEEDER_DL_ADRESS="https://github.com/wangyu-/UDPspeeder/releases/downloa
 ARG UDPSPEEDER_BIN_NAME="speederv2_$ARCH"
 
 ARG GOST_TAG_NAME=2.11.1
-ARG GOST_FILE_NAME="gost-linux-amd64-$GOST_TAG_NAME.gz
-ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/gost-linux-$ARCH-$GOST_TAG_NAME.gz
+ARG GOST_FILE_NAME="gost-linux-amd64-$GOST_TAG_NAME.gz"
+ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/gost-linux-$ARCH-$GOST_TAG_NAME.gz"
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
 RUN apk update \
