@@ -36,9 +36,9 @@ RUN apk update \
  && find ./ -type f -not -name "$UDPSPEEDER_BIN_NAME" -delete \
  && mv "/home/$UDPSPEEDER_BIN_NAME" /usr/bin/speederv2 \
  && wget $GOST_DL_ADRESS -O $GOST_FILE_NAME \
- && tar -zxvf $UDP2RAW_FILE_NAME \
- && find ./ -type f -not -name "$UDP2RAW_BIN_NAME" -delete \
- && mv "/home/$UDP2RAW_BIN_NAME" /usr/bin/gost \
+ && tar -zxvf $GOST_FILE_NAME \
+ && find ./ -type f -not -name "$GOST_BIN_NAME" -delete \
+ && mv "/home/$GOST_BIN_NAME" /usr/bin/gost \
  && chmod +x /usr/bin/gost
  
 EXPOSE 4096/UDP
