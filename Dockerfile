@@ -15,6 +15,7 @@ ENV PASSWORD password
 ENV TZ=Asia/Shanghai
 ENV FEC_OPTIONS "1:2,2:4,8:6,20:10"
 ENV TIMEOUT 4ms
+ENV OPTION "--disable-obscure"
 
 WORKDIR /home
 
@@ -29,7 +30,7 @@ ARG GOST_FILE_NAME="gost-linux-$ARCH-$GOST_TAG_NAME.gz"
 ARG GOST_DL_ADRESS="https://github.com/ginuerzh/gost/releases/download/v$GOST_TAG_NAME/$GOST_FILE_NAME"
 ARG GOST_BIN_NAME="gost-linux-$ARCH-$GOST_TAG_NAME"
 
-RUN apk add --no-cache tzdata iptables \
+RUN apk add --no-cache tzdata iptables mtr iperf3 iftop \
  && apk add --no-cache --virtual TMP wget tar gzip  \
  && wget $UDPSPEEDER_DL_ADRESS -O $UDPSPEEDER_FILE_NAME \
  && tar -zxvf $UDPSPEEDER_FILE_NAME \
