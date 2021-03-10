@@ -81,7 +81,7 @@ docker run -itd --name  gostvpn \
 -e LANRANGE="192.168.2.0/24" \
 -e MODE=1 \
 -e FEC_OPTIONS="2:4" \
--e PASSWORD=sanjin \
+-e PASSWORD=password \
 -e TIMEOUT=1 \
 -e GOSTMTU=1300 \
 -e MTU=1360 \
@@ -137,7 +137,7 @@ chmod +x /usr/bin/gost
 ```bash
 
 #参数记得和服务器端一致
-tmux new-session -d -s udp 'speederv2 -c -l0.0.0.0:8338 -r<ip>:4096 --mode 1 --fec 2:4 -k sanjin --timeout 1ms  --mtu 1300 --interval 4 --disable-obscure --fifo /tmp/fifo.file'
+tmux new-session -d -s udp 'speederv2 -c -l0.0.0.0:8338 -r<ip>:4096 --mode 1 --fec 2:4 -k password --timeout 1ms  --mtu 1300 --interval 4 --disable-obscure --fifo /tmp/fifo.file'
 tmux new-session -d -s gost 'gost -L tun://:8421/127.0.0.1:8338?net=192.168.123.2/24&tcp=true'
 
 ```
